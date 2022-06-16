@@ -6,7 +6,7 @@ export const TASKS_DATA: Task[] = [
         id: 1,
         name: "Công việc 1",
         status: { id: 1, class: "doing", name: 'Đang làm' },
-        priority: { id: 1, class: "very_high", name: 'Rất gấp' },
+        priority: { id: 3, class: "very_high", name: 'Rất gấp' },
         project: 1001,
         begin_at: moment('31/01/2022', 'DD/MM/YYYY'),
         end_at: moment('31/12/2022', 'DD/MM/YYYY'),

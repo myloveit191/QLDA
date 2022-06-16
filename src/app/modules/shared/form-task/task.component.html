@@ -11,7 +11,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Tên công việc</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" autocomplete="off">
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Mô tả công việc</mat-label>
@@ -22,16 +22,16 @@
       <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap=".5rem">
         <mat-form-field appearance="outline" fxFlex="50">
           <mat-label>Mức độ công việc</mat-label>
-          <mat-select formControlName="priority">
-            <mat-option *ngFor="let priority of priorities" [value]="priority.id">
+          <mat-select formControlName="priority" [compareWith]="compareId">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
               {{priority.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline" fxFlex="50">
           <mat-label>Trạng thái công việc</mat-label>
-          <mat-select formControlName="status">
-            <mat-option *ngFor="let status of status_s" [value]="status.id">
+          <mat-select formControlName="status" [compareWith]="compareId">
+            <mat-option *ngFor="let status of status_s" [value]="status">
               {{status.name}}
             </mat-option>
           </mat-select>
@@ -85,7 +85,7 @@
       </mat-form-field>
     </div>
   </div>
-
-
   <button type="submit" [disabled]="!tasksForm.valid" mat-flat-button color="primary">Lưu thông tin</button>
+ 
+  <pre><p> {{this.tasksForm.value| json}}</p></pre>
 </form>

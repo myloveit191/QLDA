@@ -4,15 +4,19 @@ import { TASKS_DATA } from '../_mock/task';
 import { Task } from '../_models/task';
 
 @Injectable()
-export class DataService {
+export class TaskSubjectService {
 
     private tasksSource = new BehaviorSubject(TASKS_DATA);
-    currentMessage = this.tasksSource.asObservable();
-
+    private currentTaskSource = new BehaviorSubject({});
+    tasksObservable = this.tasksSource.asObservable();
+    currentTaskObservable = this.currentTaskSource.asObservable();
     constructor() { }
 
-    changed(tasks: Task[]) {
+    changedTasks(tasks: Task[]) {
         this.tasksSource.next(tasks)
     }
 
+    changedTask(task: Task) {
+        this.currentTaskSource.next(task)
+    }
 }

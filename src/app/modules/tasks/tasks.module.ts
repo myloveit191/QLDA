@@ -11,6 +11,7 @@ import { TasksComponent } from './tasks.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
 import { TaskEditComponent } from '../shared/dialogs/task-edit/task-edit.component';
+import { TaskSubjectService } from '../_services/taskSubject.service';
 
 
 @NgModule({
@@ -28,5 +29,8 @@ import { TaskEditComponent } from '../shared/dialogs/task-edit/task-edit.compone
     FlexLayoutModule,
     SharedModule
   ],
+  providers:[
+    TaskSubjectService
+  ]
 })
 export class TasksModule { }
