@@ -1,0 +1,196 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$QLDA-primary: mat.define-palette(mat.$indigo-palette);
+$QLDA-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$QLDA-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$QLDA-theme: mat.define-light-theme((color: (primary: $QLDA-primary,
+        accent: $QLDA-accent,
+        warn: $QLDA-warn,
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($QLDA-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-stroked-button:not(.mat-button-disabled) {
+  border-color: currentColor;
+}
+
+.spacer {
+  margin-left: auto;
+}
+
+$spacer: 1rem !default;
+$spacers: (
+  ) !default;
+$spacers: map-merge((0: 0,
+      1: ($spacer * .25),
+      2: ($spacer * .5),
+      3: $spacer,
+      4: ($spacer * 1.5),
+      5: ($spacer * 3)), $spacers
+);
+
+.vn-ml-1 {
+  margin-left: $spacer  !important;
+}
+
+.vn-mt-1 {
+  margin-top: $spacer  !important;
+}
+
+.vn-mb-1 {
+  margin-bottom: $spacer  !important;
+}
+
+.vn-mb-4 {
+  margin-bottom: $spacer*2  !important;
+}
+
+.text-warning {
+  color: #FD612C;
+}
+
+.text-alert {
+  color: #E8384F;
+}
+
+.text-success {
+  color: #1DD595;
+}
+
+.text-primary {
+  color: #1265B6;
+}
+
+.text-secondary {
+  color: #706E6E;
+}
+
+.bg-primary {
+  background-color: #1265B6;
+}
+
+.bg-secondary {
+  background-color: #706E6E;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.font-xl {
+  font-size: 4rem;
+}
+
+.font-sm {
+  font-size: 14px;
+}
+
+.font-md {
+  font-size: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.pill {
+  padding: 0px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.doing {
+  color: #fff;
+  background-color: #1265B6;
+}
+
+.todo {
+  color: #fff;
+  background-color: #706E6E;
+
+}
+.pending {
+  color: #fff;
+  background-color: #B4B4B4;
+
+}
+.review {
+  color: #fff;
+  background-color: #1E7E34;
+
+}
+.done {
+  color: #fff;
+  background-color: #1DD595;
+
+}
+.normal {
+  color: #fff;
+  background-color: #E4AD84;
+
+}
+.high{
+  color: #fff;
+  background-color: #FD612C;
+
+}
+.very_high{
+  color: #fff;
+  background-color: #E8384F;
+}

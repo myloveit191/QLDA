@@ -1,0 +1,32 @@
+<mat-toolbar>
+  <div class="logo">
+    <a href="/"><img src="https://itvnpt.vn/wp-content/uploads/2021/11/Logo-VNPT-TP-HCM-1.png"
+        alt="Tập đoàn bưu chính viễn thông"></a>
+  </div>
+  <mat-icon class="icon-dashboard" aria-hidden="false">space_dashboard</mat-icon>
+  <a mat-button routerLink="/" mat-stroked-button color="primary">Dashboard</a>
+  <a class="vn-ml-1" mat-button  mat-flat-button color="primary">Dự Án</a>
+  <div class="spacer"></div>
+  <form>
+      <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm" [formControl]="fullTextSearch" aria-label="Number" matInput
+            [matAutocomplete]="auto">
+            <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+      </div>
+  </form>
+  <mat-icon class="notification" fontSet="material-icons-outlined">notifications</mat-icon>
+  <img src="https://www.w3schools.com/howto/img_avatar.png" class="avatar" alt="">
+  <button mat-button [matMenuTriggerFor]="menu"> <span>Nguyễn Văn A</span>
+    <mat-icon class="arrow_drop_down" fontSet="material-icons-outlined">arrow_drop_down</mat-icon>
+  </button>
+  <!-- #enddocregion mat-menu-trigger-for -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Thông tin người dùng</button>
+    <button mat-menu-item>Đăng xuất</button>
+  </mat-menu>
+</mat-toolbar>

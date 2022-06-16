@@ -1,0 +1,17 @@
+<app-header></app-header>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer class="sidenav bg-primary" mode="side" opened>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option routerLink="projects/create">Thêm dự án</mat-list-option>
+      <mat-list-option routerLink="projects">Danh sách dự án</mat-list-option>
+      <mat-list-option routerLink="projects/categories">Danh mục dự án</mat-list-option>
+      <mat-list-option routerLink="tasks/create">Thêm công việc</mat-list-option>
+      <mat-list-option routerLink="tasks">Danh sách công việc</mat-list-option>
+      <mat-list-option>Thêm thành viên</mat-list-option>
+    </mat-selection-list>
+
+  </mat-drawer>
+  <div class="page-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

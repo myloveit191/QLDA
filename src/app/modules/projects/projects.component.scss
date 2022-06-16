@@ -1,0 +1,19 @@
+.content-box {
+    .mat-card {
+        width: 100%;
+    }
+
+    .mat-card,
+    .mat-expansion-panel {
+        box-shadow: none;
+        margin-bottom: 1.5rem;
+    }
+}
+
+mat-form-field {
+    margin-right: 12px;
+}
+.isFocus{
+    color: #1265B6;
+    font-weight: 500;
+}

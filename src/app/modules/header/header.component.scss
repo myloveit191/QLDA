@@ -1,0 +1,65 @@
+.menu-left {
+    display: flex;
+}
+
+.logo {
+    a {
+        display: block;
+        padding-top: 10px;
+    }
+
+    img {
+        height: 40px;
+    }
+}
+
+.icon-dashboard {
+    height: 46px;
+    width: 46px;
+    font-size: 46px;
+    color: #1265B6;
+    padding: 0 .5rem 0 2rem;
+}
+
+.search-box {
+    width: 400px;
+    position: relative;
+
+    input {
+        height: 2.5rem;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 60px 0 20px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .mat-icon {
+        position: absolute;
+        right: 16px;
+        top: 9px;
+        // height: 2.5rem;
+        // width: 2.5rem;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.notification {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+.arrow_drop_down {
+    margin-left: 1rem;
+    transform: scale(1.8);
+    margin-bottom: 5px
+}

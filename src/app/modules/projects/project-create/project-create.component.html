@@ -1,0 +1,58 @@
+<div class="page-content">
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <div>
+      <h2>Thêm dự án</h2>
+    </div>
+  </div>
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <mat-card>
+      <form (ngSubmit)="onSubmit()" [formGroup]="projectForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Mã dự án</mat-label>
+          <input matInput  formControlName="code" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Tên dự án</mat-label>
+          <input matInput  formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="vn-mb-1">
+          <mat-label>Danh mục dự án</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+          <mat-hint class="pointer d-flex align-center text-primary" (click)="addCategory()">
+            <span class="material-icons-outlined font-md">
+              add
+            </span> Thêm danh mục
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="vn-ml-1">
+          <mat-label>Bắt đầu</mat-label>
+          <input matInput [matDatepicker]="begin_picker" formControlName="begin_at" autocomplete="off">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="begin_picker"></mat-datepicker-toggle>
+          <mat-datepicker #begin_picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="vn-ml-1">
+          <mat-label>Kết thúc</mat-label>
+          <input matInput [matDatepicker]="end_picker" formControlName="end_at" autocomplete="off">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
+          <mat-datepicker #end_picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Chủ đầu tư</mat-label>
+          <input matInput  formControlName="investor">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Mô tả dự án</mat-label>
+          <textarea matInput formControlName="des" [rows]="6"></textarea>
+        </mat-form-field>
+        <button [disabled]="!projectForm.valid" type="submit" mat-flat-button color="primary">Lưu thông tin</button>
+      </form>
+      {{this.projectForm.value | json}}
+    </mat-card>
+  </div>
+</div>

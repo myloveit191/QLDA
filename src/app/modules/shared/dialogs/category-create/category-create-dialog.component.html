@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Thêm danh mục dự án</h1>
+<form [formGroup]="categoryForm">
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Tên danh mục</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Mô tả danh mục</mat-label>
+      <textarea matInput formControlName="des" [rows]="6"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="onNoClick()">Hủy bỏ</button>
+    <button mat-button mat-dialog-close (click)="onSubmit()" cdkFocusInitial color="primary">Thêm
+      mới</button>
+  </div>
+</form>

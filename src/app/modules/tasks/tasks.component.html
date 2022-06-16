@@ -1,0 +1,59 @@
+<div class="page-content">
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <div>
+      <h2>Danh sách công việc</h2>
+    </div>
+  </div>
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <mat-card fxFlex="100">
+      <table mat-table [dataSource]="dataTasks" class="w-100">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> STT </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Tên công việc </th>
+          <td mat-cell *matCellDef="let element"> 
+            <div>{{element.name}} </div>
+            <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="0.5rem">
+              <div [ngClass]="['pill', element.status.class]">{{element.status.name}}</div>
+              <div [ngClass]="['pill', element.priority.class]">{{element.priority.name}}</div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="project">
+          <th mat-header-cell *matHeaderCellDef> Thuộc dự án </th>
+          <td mat-cell *matCellDef="let element" class="text-primary"> {{element.project}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="begin_at">
+          <th mat-header-cell *matHeaderCellDef> Bắt đầu </th>
+          <td mat-cell *matCellDef="let element"> {{element.begin_at.format('DD/MM/YYYY')}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="end_at">
+          <th mat-header-cell *matHeaderCellDef> Kết thúc </th>
+          <td mat-cell *matCellDef="let element"> {{element.end_at.format('DD/MM/YYYY')}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leader">
+          <th mat-header-cell *matHeaderCellDef> Người quản lý </th>
+          <td mat-cell *matCellDef="let element" class="text-bold"> {{element.leader.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="members">
+          <th mat-header-cell *matHeaderCellDef> Thành viên </th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="5px">
+              <div *ngFor="let member of element.members"  mat-card-avatar style="background-image: url({{member.avatar}}); background-size: cover;"></div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="disTasksColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: disTasksColumns;" (click)="getRecord(row)"></tr>
+      </table>
+    </mat-card>
+  </div>
+</div>

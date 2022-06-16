@@ -1,0 +1,16 @@
+.content-box {
+    .mat-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mat-card,
+    .mat-expansion-panel {
+        box-shadow: none;
+        margin-bottom: 1.5rem;
+    }
+}
+
+mat-form-field {
+    margin-right: 12px;
+}

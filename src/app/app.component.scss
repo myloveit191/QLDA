@@ -1,0 +1,13 @@
+.page-content {
+    padding: 1.5rem;
+}
+// SIDEBAR
+mat-drawer-container{
+    min-height: 100vh;
+}
+.sidenav{
+    mat-list-option{
+        color: rgb(247, 247, 247);
+        font-weight: 500;
+    }
+}

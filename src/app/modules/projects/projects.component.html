@@ -1,0 +1,83 @@
+<div class="page-content">
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <div>
+      <h2>Danh sách dự án</h2>
+    </div>
+  </div>
+  <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
+    <mat-card>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="qlda-tree">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="showInfo(node)" [class.isFocus]="selectedNode === node.id">
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <!-- <button mat-icon-button s></button> -->
+          <span class="pointer">{{node.name}}</span>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" (click)="showInfo(node)">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <span (click)="showInfo(node)" class="pointer" [class.isFocus]="selectedNode === node.id" >{{node.name}}</span>
+        </mat-tree-node>
+      </mat-tree>
+    </mat-card>
+    <mat-card>
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Thông tin chính">
+          <form (ngSubmit)="onSubmit()" [formGroup]="projectForm">
+            <div *ngIf="project.code" class="vn-mb-1 vn-mt-1">
+              <label>Mã dự án: {{project.code}}</label>
+            </div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Tên dự án</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Bắt đầu</mat-label>
+              <input matInput [matDatepicker]="begin_picker" formControlName="begin_at">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="begin_picker"></mat-datepicker-toggle>
+              <mat-datepicker #begin_picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Kết thúc</mat-label>
+              <input matInput [matDatepicker]="end_picker" formControlName="end_at">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
+              <mat-datepicker #end_picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Chủ đầu tư</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="investor">
+            </mat-form-field>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Mô tả dự án</mat-label>
+              <textarea matInput formControlName="des" [rows]="6"></textarea>
+            </mat-form-field>
+            <button type="submit" mat-flat-button color="primary">Lưu thông tin</button>
+
+          </form>
+
+        </mat-tab>
+        <mat-tab label="Thông tin khác">
+          <div>
+            <label>Ngày tạo: {{project.create_at.format('DD/MM/YYYY')}}</label>
+          </div>
+          <div>
+            <label>Người tạo: {{project.create_by}}</label>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tài liệu liên quan">
+          <mat-selection-list #docs [multiple]="false">
+            <mat-list-option *ngFor="let doc of project.doc" [value]="doc">
+              {{doc.name}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>

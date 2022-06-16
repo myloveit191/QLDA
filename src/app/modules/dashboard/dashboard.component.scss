@@ -1,0 +1,64 @@
+
+
+.content-box {
+
+    .mat-card,
+    .mat-expansion-panel {
+        box-shadow: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-border {
+        background-color: unset;
+        border: 2px solid #606161;
+    }
+}
+
+.mat-icon-xl {
+    height: 4rem;
+    width: 4rem;
+    font-size: 4rem;
+}
+
+.mat-icon-l {
+    height: 3rem;
+    width: 3rem;
+    font-size: 3rem;
+}
+
+.mat-icon-m {
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
+}
+
+.font-size-default {
+    font-size: 1rem;
+}
+
+table {
+    width: 100%;
+}
+
+.stick {
+    display: inline-block;
+    width: 50px;
+    height: 1rem;
+    border-radius: 10px;
+}
+
+mat-panel-title {
+    flex-basis: 0;
+}
+
+mat-panel-description {
+    flex-basis: 100%;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+mat-expansion-panel-header {
+    border: 1px solid #DCDADA;
+}
+
