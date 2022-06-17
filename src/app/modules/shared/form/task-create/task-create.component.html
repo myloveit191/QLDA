@@ -1,0 +1,99 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="tasksForm">
+  <div class="form-task" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="2rem">
+    <div fxFlex="60">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Thuộc dự án</mat-label>
+        <mat-select formControlName="project">
+          <mat-option *ngFor="let project of projects" [value]="project.id">
+            {{project.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Tên công việc</mat-label>
+        <input matInput formControlName="name" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Công việc trực thuộc (Cha)</mat-label>
+        <mat-select formControlName="belong_task">
+          <mat-option *ngFor="let task of tasksByProject" [value]="task.id">
+            {{task.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Mô tả công việc</mat-label>
+        <textarea matInput formControlName="des" [rows]="6"></textarea>
+      </mat-form-field>
+    </div>
+    <div fxFlex="40">
+      <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap=".5rem">
+        <mat-form-field appearance="outline" fxFlex="50">
+          <mat-label>Mức độ công việc</mat-label>
+          <mat-select formControlName="priority" [compareWith]="compareId">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
+              {{priority.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50">
+          <mat-label>Trạng thái công việc</mat-label>
+          <mat-select formControlName="status" [compareWith]="compareId">
+            <mat-option *ngFor="let status of status_s" [value]="status">
+              {{status.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap=".5rem">
+        <mat-form-field appearance="outline" fxFlex="50">
+          <mat-label>Bắt đầu</mat-label>
+          <input matInput [matDatepicker]="begin_picker" formControlName="begin_at" autocomplete="off">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="begin_picker"></mat-datepicker-toggle>
+          <mat-datepicker #begin_picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50">
+          <mat-label>Kết thúc</mat-label>
+          <input matInput [matDatepicker]="end_picker" formControlName="end_at" autocomplete="off">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
+          <mat-datepicker #end_picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Người quản lý</mat-label>
+        <input type="text" matInput formControlName="leader" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith">
+          <mat-option *ngFor="let member of filteredMembers | async" [value]="member">
+            {{member.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Người tham gia</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let selected_member of tasksForm.get('selected_members')?.value; let i = index;"
+            (removed)="removeMemberChip(i)">
+            {{selected_member.name}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="Thêm thành viên..." #memberInput [formControl]="memberCtrl" [matAutocomplete]="autoM"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #autoM="matAutocomplete" (optionSelected)="selectedMember($event)">
+          <mat-option *ngFor="let member of filteredMembersChip | async" [value]="member">
+            {{member.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!tasksForm.valid" mat-flat-button color="primary">Lưu thông tin</button>
+ 
+  <pre><p> {{this.tasksForm.value| json}}</p></pre>
+</form>

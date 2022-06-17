@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
-import { TaskComponent } from './form-task/task.component';
+import { TaskEditFormComponent } from './form/task-edit/task-edit.component';
 import { CategoryCreateDialogComponent } from './dialogs/category-create/category-create-dialog.component';
 import { DeleteDialogComponent } from './dialogs/delete/delete-dialog.component';
 import { TaskEditComponent } from './dialogs/task-edit/task-edit.component';
+import { TaskCreateFormComponent } from './form/task-create/task-create.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TaskEditComponent } from './dialogs/task-edit/task-edit.component';
     CategoryCreateDialogComponent,
     DeleteDialogComponent,
     TaskEditComponent,
-    TaskComponent,
+    TaskEditFormComponent,
+    TaskCreateFormComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { TaskEditComponent } from './dialogs/task-edit/task-edit.component';
     CategoryCreateDialogComponent,
     DeleteDialogComponent,
     TaskEditComponent,
-    TaskComponent,
+    TaskEditFormComponent,
+    TaskCreateFormComponent
   ]
 })
 export class SharedModule { }

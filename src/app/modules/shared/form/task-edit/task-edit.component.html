@@ -14,6 +14,14 @@
         <input matInput formControlName="name" autocomplete="off">
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Công việc trực thuộc (Cha)</mat-label>
+        <mat-select formControlName="belong_task" >
+          <mat-option *ngFor="let task of tasksByProject" [value]="task.id">
+            {{task.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Mô tả công việc</mat-label>
         <textarea matInput formControlName="des" [rows]="6"></textarea>
       </mat-form-field>
