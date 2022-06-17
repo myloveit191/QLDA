@@ -16,7 +16,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -38,7 +38,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 3,
                 name: "Trần Văn Chiến",
@@ -59,7 +59,7 @@ export const TASKS_DATA: Task[] = [
             name: "Lê Bá Ngọc",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -79,7 +79,7 @@ export const TASKS_DATA: Task[] = [
             name: "Thái Ngọc Nữ",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 5,
                 name: "Đặng Hoài Nam",
@@ -105,7 +105,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 4,
                 name: "Thái Ngọc Nữ",
@@ -131,7 +131,7 @@ export const TASKS_DATA: Task[] = [
             name: "Lê Bá Ngọc",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -152,7 +152,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -173,7 +173,7 @@ export const TASKS_DATA: Task[] = [
             name: "Bùi Xuân Hiến",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -194,7 +194,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -215,7 +215,7 @@ export const TASKS_DATA: Task[] = [
             name: "Nguyễn Văn A",
             avatar: 'https://i.pinimg.com/736x/d1/b0/59/d1b059755ec1986183e8d24846626a33--lee.jpg'
         },
-        members: [
+        selected_members: [
             {
                 id: 2,
                 name: "Cao Hoàng Lâm",
@@ -233,5 +233,5 @@ export const DISPLAYED_TASK_COLUMNS = [
     'begin_at',
     'end_at',
     'leader',
-    'members',
+    'selected_members',
 ]

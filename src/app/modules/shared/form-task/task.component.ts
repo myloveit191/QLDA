@@ -54,9 +54,9 @@ export class TaskComponent implements OnInit {
       begin_at: [''],
       end_at: [''],
       leader: ['', Validators.required],
-      selected_members: new FormArray([]),
+      selected_members: this.fb.array([]),
     });
-
+    
     // Observable Chip ( Angular Material )
     this.filteredMembers = this.tasksForm.get('leader')?.valueChanges.pipe(
       startWith(''),
@@ -70,7 +70,22 @@ export class TaskComponent implements OnInit {
     );
     //Quan sát dữ liệu từ Task
     this.taskSubjectService.tasksObservable.subscribe(tasks => this.tasks = tasks);
-    this.taskSubjectService.currentTaskObservable.subscribe(task => this.tasksForm.patchValue(task));
+    this.taskSubjectService.currentTaskObservable.subscribe((task) => {
+      this.tasksForm.patchValue(task);
+      task.selected_members.map((member: Member) =>{
+        const memberForm = this.fb.group({
+          id: member.id,
+          name: member.name,
+          avatar: member.avatar
+        });
+        this.selected_members.push(memberForm);
+      })
+    });
+    this.taskSubjectService.changedTask({});
+  }
+
+  get selected_members() {
+    return this.tasksForm.controls['selected_members'] as FormArray;
   }
   onSubmit() {
     if (this.tasksForm.valid) {

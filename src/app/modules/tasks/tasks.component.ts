@@ -23,7 +23,7 @@ export class TasksComponent implements OnInit {
   ngOnInit(): void {
     this.taskSubjectService.tasksObservable.subscribe(tasks => this.dataTasks = tasks)
   }
-  getRecord(row: any){
+  getRecord(row: Task){
     const dialogCategory = this.dialog.open(TaskEditComponent, {
       width: '80vw'
     });

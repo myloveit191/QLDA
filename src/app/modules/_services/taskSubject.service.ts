@@ -7,7 +7,7 @@ import { Task } from '../_models/task';
 export class TaskSubjectService {
 
     private tasksSource = new BehaviorSubject(TASKS_DATA);
-    private currentTaskSource = new BehaviorSubject({});
+    private currentTaskSource = new BehaviorSubject({} as Task);
     tasksObservable = this.tasksSource.asObservable();
     currentTaskObservable = this.currentTaskSource.asObservable();
     constructor() { }
@@ -16,7 +16,7 @@ export class TaskSubjectService {
         this.tasksSource.next(tasks)
     }
 
-    changedTask(task: Task) {
+    changedTask(task: any) {
         this.currentTaskSource.next(task)
     }
 }

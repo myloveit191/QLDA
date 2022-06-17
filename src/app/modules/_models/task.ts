@@ -15,5 +15,5 @@ export interface Task {
     begin_at:Moment,
     end_at:Moment
     leader: Member,
-    members?: Member[]
+    selected_members: Member[]
 }
