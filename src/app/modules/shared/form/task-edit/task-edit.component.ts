@@ -4,6 +4,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
+import { DISPLAYED_SUB_TASK_COLUMNS } from 'src/app/modules/_mock/task';
 import { MEMBERS_DATA } from '../../../_mock/member';
 import { PRIORITIES_DATA } from '../../../_mock/priority';
 import { PROJECT_DATA } from '../../../_mock/project';
@@ -35,7 +36,8 @@ export class TaskEditFormComponent implements OnInit {
   memberCtrl = new FormControl('');
   // selected_members: Member[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
-
+  dataSubTasks: Task[] = []; 
+  disSubTasksColumns: string[] = DISPLAYED_SUB_TASK_COLUMNS;
   @ViewChild('memberInput')
   memberInput!: ElementRef<HTMLInputElement>;
 
@@ -86,6 +88,12 @@ export class TaskEditFormComponent implements OnInit {
         this.selected_members.push(memberForm);
       })
       this.tasksByProject = this.tasks.filter(t => t.project === task.project && t.id != task.id);
+      task.include_task?.map(id => {
+        const s = this.tasks.filter(task => task.id === id);   
+        console.log(s[0]);
+             
+        this.dataSubTasks.push(s[0]);
+      })
     });
 
     
@@ -141,5 +149,10 @@ export class TaskEditFormComponent implements OnInit {
     this.tasksForm.get('selected_members')?.value.push(event.option.value);
     this.memberInput.nativeElement.value = '';
     this.memberCtrl.setValue(null);
+  }
+
+  //Chọn 1 hàng trong danh sách bảng
+  getRecord(row: any) {
+
   }
 }

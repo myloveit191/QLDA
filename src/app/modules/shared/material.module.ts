@@ -10,6 +10,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
     exports: [
        //Icon
@@ -35,7 +36,10 @@ import {MatSelectModule} from '@angular/material/select';
        MatChipsModule,
 
        //Dialog
-       MatDialogModule
+       MatDialogModule,
+
+       //Table
+       MatTableModule
     ]
 })
 export class MaterialModule { }

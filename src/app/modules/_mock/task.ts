@@ -74,6 +74,7 @@ export const TASKS_DATA: Task[] = [
         project: 1002,
         begin_at: moment('31/01/2022', 'DD/MM/YYYY'),
         end_at: moment('31/12/2022', 'DD/MM/YYYY'),
+        belong_task: 3,
         leader: {
             id: 4,
             name: "Thái Ngọc Nữ",
@@ -234,4 +235,9 @@ export const DISPLAYED_TASK_COLUMNS = [
     'end_at',
     'leader',
     'selected_members',
+]
+export const DISPLAYED_SUB_TASK_COLUMNS = [
+    'position',
+    'name',
+    'leader',
 ]

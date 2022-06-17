@@ -25,6 +25,30 @@
         <mat-label>Mô tả công việc</mat-label>
         <textarea matInput formControlName="des" [rows]="6"></textarea>
       </mat-form-field>
+      <label for="">Danh sách công việc con</label>
+      <table mat-table [dataSource]="dataSubTasks" class="w-100">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> STT </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Tên công việc </th>
+          <td mat-cell *matCellDef="let element"> 
+            <div>{{element.name}} </div>
+            <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="0.5rem">
+              <div [ngClass]="['pill', element.status.class]">{{element.status.name}}</div>
+              <div [ngClass]="['pill', element.priority.class]">{{element.priority.name}}</div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="leader">
+          <th mat-header-cell *matHeaderCellDef> Người quản lý </th>
+          <td mat-cell *matCellDef="let element" class="text-bold"> {{element.leader.name}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="disSubTasksColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: disSubTasksColumns;" (click)="getRecord(row)"></tr>
+      </table>
     </div>
     <div fxFlex="40">
       <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap=".5rem">
@@ -93,7 +117,9 @@
       </mat-form-field>
     </div>
   </div>
-  <button type="submit" [disabled]="!tasksForm.valid" mat-flat-button color="primary">Lưu thông tin</button>
+  <div style="margin-top: 1rem">
+    <button type="submit" [disabled]="!tasksForm.valid" mat-flat-button color="primary">Lưu thông tin</button>
+  </div>
  
   <pre><p> {{this.tasksForm.value| json}}</p></pre>
 </form>
