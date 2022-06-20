@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   exports: [
     MatFormFieldModule,
@@ -20,7 +22,9 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatDialogModule,
     MatChipsModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

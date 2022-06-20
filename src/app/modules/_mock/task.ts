@@ -228,13 +228,14 @@ export const TASKS_DATA: Task[] = [
 ]
 
 export const DISPLAYED_TASK_COLUMNS = [
-    'position',
+    'select',
     'name',
     'project',
     'begin_at',
     'end_at',
     'leader',
     'selected_members',
+    'options'
 ]
 export const DISPLAYED_SUB_TASK_COLUMNS = [
     'position',

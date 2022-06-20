@@ -28,10 +28,14 @@ export class ProjectCreateComponent implements OnInit {
       code: ['', Validators.required],
       name: ['', Validators.required],
       category: ['', Validators.required],
-      investor: ['', Validators.required],
-      des: [''],
+      priority: ['', Validators.required],
+      form:  ['', Validators.required],
       begin_at: ['', Validators.required],
       end_at: ['', Validators.required],
+      investor: ['', Validators.required],
+      revenue: ['', Validators.required],
+      revenue2: ['', Validators.required],
+      des: [''],
     });
   }
   onSubmit() {

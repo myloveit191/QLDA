@@ -6,46 +6,88 @@
   </div>
   <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
     <mat-card>
-      <form (ngSubmit)="onSubmit()" [formGroup]="projectForm">
-        <mat-form-field appearance="outline">
-          <mat-label>Mã dự án</mat-label>
-          <input matInput  formControlName="code" autocomplete="off">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Tên dự án</mat-label>
-          <input matInput  formControlName="name">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="vn-mb-1">
-          <mat-label>Danh mục dự án</mat-label>
-          <mat-select formControlName="category">
-            <mat-option *ngFor="let category of categories" [value]="category.id">
-              {{category.name}}
-            </mat-option>
-          </mat-select>
-          <mat-hint class="pointer d-flex align-center text-primary" (click)="addCategory()">
-            <span class="material-icons-outlined font-md">
-              add
-            </span> Thêm danh mục
-          </mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="vn-ml-1">
-          <mat-label>Bắt đầu</mat-label>
-          <input matInput [matDatepicker]="begin_picker" formControlName="begin_at" autocomplete="off">
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="begin_picker"></mat-datepicker-toggle>
-          <mat-datepicker #begin_picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="vn-ml-1">
-          <mat-label>Kết thúc</mat-label>
-          <input matInput [matDatepicker]="end_picker" formControlName="end_at" autocomplete="off">
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
-          <mat-datepicker #end_picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Chủ đầu tư</mat-label>
-          <input matInput  formControlName="investor">
-        </mat-form-field>
+      <form class="project-form" (ngSubmit)="onSubmit()" [formGroup]="projectForm">
+        <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="0.5rem">
+          <mat-form-field appearance="outline" fxFlex="20">
+            <mat-label>Mã dự án</mat-label>
+            <input matInput formControlName="code" autocomplete="off">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="80">
+            <mat-label>Tên dự án</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="0.5rem">
+          <mat-form-field appearance="outline" class="vn-mb-1" fxFlex="25">
+            <mat-label>Loại dự án</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint class="pointer d-flex align-center text-primary" (click)="addCategory()">
+              <span class="material-icons-outlined font-md">
+                add
+              </span> Thêm loại dự án
+            </mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="vn-mb-1" fxFlex="20">
+            <mat-label>Mức độ</mat-label>
+            <mat-select formControlName="priority">
+              <mat-option [value]="">
+                Thấp
+              </mat-option>
+              <mat-option [value]="">
+                Bình thường
+              </mat-option>
+              <mat-option [value]="">
+                Cao
+              </mat-option>
+              <mat-option [value]="">
+                Khẩn cấp
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="vn-mb-1" fxFlex="20">
+            <mat-label>Hình thức dự án</mat-label>
+            <mat-select formControlName="form">
+              <mat-option [value]="">
+                Thuê
+              </mat-option>
+              <mat-option [value]="">
+                Đầu tư
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="date-picker vn-ml-1">
+            <mat-label>Bắt đầu</mat-label>
+            <input  matInput [matDatepicker]="begin_picker" formControlName="begin_at" autocomplete="off">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="begin_picker"></mat-datepicker-toggle>
+            <mat-datepicker #begin_picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="date-picker vn-ml-1">
+            <mat-label>Kết thúc</mat-label>
+            <input  matInput [matDatepicker]="end_picker" formControlName="end_at" autocomplete="off">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
+            <mat-datepicker #end_picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="start" fxLayout="row" fxLayoutGap="0.5rem">
+          <mat-form-field appearance="outline" fxFlex="40">
+            <mat-label>Chủ đầu tư</mat-label>
+            <input matInput formControlName="investor">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="30">
+            <mat-label>Doanh thu ( dự kiến )</mat-label>
+            <input type="number" matInput formControlName="revenue" autocomplete="off">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="30">
+            <mat-label>Doanh thu phát sinh ( dự kiến )</mat-label>
+            <input type="number" matInput formControlName="revenue2" autocomplete="off">
+          </mat-form-field>
+        </div>
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>Mô tả dự án</mat-label>
           <textarea matInput formControlName="des" [rows]="6"></textarea>

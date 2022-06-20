@@ -135,7 +135,9 @@ $spacers: map-merge((0: 0,
 .w-100 {
   width: 100% !important;
 }
-
+.w-maxcontent{
+  width: max-content !important;
+}
 .pointer {
   cursor: pointer;
 }

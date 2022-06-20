@@ -13,3 +13,10 @@ td.mat-footer-cell:last-of-type {
 .mat-row:hover {
     background-color: rgba(247, 247, 247, 0.932);
 }
+.mat-header-cell, .mat-cell{
+    padding: 0px 5px;
+}
+.table-content{
+    width: 1% !important;
+    white-space: nowrap;
+}

@@ -5,10 +5,17 @@ export const PROJECT_DATA: Project[] = [
     {
         id: 1001,
         code: "DA1001",
-        status: 0,
+
         name: "Dự án cải thiện môi trường nước",
         category:  { id: 2, name: "Nhóm B - Vốn đầu tư"},
-        investor: "CÔNG TY CỔ PHẦN NƯỚC - MÔI TRƯỜNG BÌNH DƯƠNG",
+        priority: 1,
+        form: 1,
+        investor: {
+            id: 1,
+            name: "Đoàn Văn Hậu",
+        },
+        revenue: 0,
+        revenue2: 0,
         des: 'Dự án xử lý nước thải này áp dụng công nghệ thu gom hiện đại bằng cách xây dựng hệ thống thu gom nước thải tách biệt với nước mưa và áp dụng công nghệ xử lý tiên tiến nhất hiện nay',
         doc: [
             {
@@ -32,10 +39,16 @@ export const PROJECT_DATA: Project[] = [
     {
         id: 1002,
         code: "DA1002",
-        status: 0,
         name: "Dự án đường liên tỉnh",
+        priority: 1,
+        form: 0,
         category:  { id: 1, name: "Nhóm A - Vốn thường xuyên", des:'aaa'},
-        investor: "Công ty cổ phần cao tốc Việt Nam",
+        investor: {
+            id: 1,
+            name: "Đoàn Văn Hậu",
+        },
+        revenue: 0,
+        revenue2: 0,
         des: 'Dự án mở rộng đường liên tỉnh nối liền các tỉnh miền Đông Nam Bộ',
         doc: [
             {
