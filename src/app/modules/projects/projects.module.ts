@@ -8,6 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectCategoriesComponent } from './project-categories/project-categories.component';
 import { MaterialModule } from './material.module';
 import { SharedModule } from '../shared/shared.module';
+import { HttpErrorHandler } from '../_services/http-error-handler.service';
+import { MessageService } from '../_services/message.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectsService } from '../_services/projects.service';
 
 
 
@@ -19,11 +24,18 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    // BrowserModule,
+    // HttpClientModule,
     ProjectsRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     MaterialModule,
     SharedModule
-  ]
+  ],
+  providers: [
+    // HttpErrorHandler,
+    // MessageService,
+    // ProjectsService
+  ],
 })
 export class ProjectsModule { }

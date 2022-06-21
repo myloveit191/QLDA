@@ -12,6 +12,9 @@ import { HeaderComponent } from './modules/header/header.component';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './modules/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpErrorHandler } from './modules/_services/http-error-handler.service';
+import { MessageService } from './modules/_services/message.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,13 @@ import { SharedModule } from './modules/shared/shared.module';
     SharedModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    HttpErrorHandler,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

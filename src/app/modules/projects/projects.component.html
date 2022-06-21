@@ -6,23 +6,21 @@
   </div>
   <div class="content-box" fxLayoutAlign="start" fxLayout="row" fxLayoutGap="1rem">
     <mat-card>
-      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="qlda-tree">
-        <!-- This is the tree node template for leaf nodes -->
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="showInfo(node)" [class.isFocus]="selectedNode === node.id">
-          <!-- use a disabled button to provide padding for tree leaf -->
-          <!-- <button mat-icon-button s></button> -->
-          <span class="pointer">{{node.name}}</span>
-        </mat-tree-node>
-        <!-- This is the tree node template for expandable nodes -->
-        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" (click)="showInfo(node)">
-            <mat-icon class="mat-icon-rtl-mirror">
-              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
-          </button>
-          <span (click)="showInfo(node)" class="pointer" [class.isFocus]="selectedNode === node.id" >{{node.name}}</span>
-        </mat-tree-node>
-      </mat-tree>
+      <table mat-table [dataSource]="dataProjects" class="w-100">
+        <ng-container matColumnDef="stt">
+          <th mat-header-cell *matHeaderCellDef> STT </th>
+          <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Tên dự án </th>
+          <td mat-cell *matCellDef="let row" class="pointer" > {{row.name}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="disProjectColumns"></tr>
+        <tr mat-row [class.isSelected]="row.id == selectedRow" *matRowDef="let row; columns: disProjectColumns;let i = index" (click)="getRecord(row)"></tr>
+      </table>
+      <!-- <pre>
+        <p>{{project | json}}</p>
+      </pre> -->
     </mat-card>
     <mat-card>
       <mat-tab-group animationDuration="0ms">
