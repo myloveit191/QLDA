@@ -21,8 +21,7 @@ export class ProjectsComponent implements OnInit {
   dataProjects!: Project[];
   selectedRow!: Number;
   data: any;
-  constructor(private fb: FormBuilder,
-    private projectsService: ProjectsService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.projectForm = this.fb.group({
